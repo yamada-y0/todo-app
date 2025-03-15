@@ -4,8 +4,6 @@ import com.github.yamy0.domain.model.Task;
 
 import java.util.List;
 
-public interface TaskRepository {
-    List<Task> findAll();
-
-    void save(Task task);
+public interface GetAllTaskPort {
+    List<Task> getTasks();
 }

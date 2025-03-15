@@ -1,26 +1,31 @@
 package com.github.yamy0.infrastructure.persistence;
 
+import com.github.yamy0.domain.model.Status;
 import com.github.yamy0.domain.model.Task;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
 @Entity(name = "task")
-public class TaskEntity extends PanacheEntity {
+public class TaskEntity extends PanacheEntityBase {
+    @Id
+    String id;
     String name;
     LocalDate dueDate;
-    boolean isCompleted;
+    Status status;
 
     public static TaskEntity from(Task task) {
-        TaskEntity taskEntity = new TaskEntity();
-        taskEntity.name = task.name();
-        taskEntity.dueDate = task.dueDate();
-        taskEntity.isCompleted = task.isCompleted();
-        return taskEntity;
+        TaskEntity entity = new TaskEntity();
+        entity.id = task.id();
+        entity.name = task.name();
+        entity.dueDate = task.dueDate();
+        entity.status = task.status();
+        return entity;
     }
 
     public Task toTask() {
-        return new Task(name, dueDate, isCompleted);
+        return new Task(id, name, dueDate, status);
     }
 }
