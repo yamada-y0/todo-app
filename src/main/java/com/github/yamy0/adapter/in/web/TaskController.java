@@ -1,4 +1,4 @@
-package com.github.yamy0.adapter.web;
+package com.github.yamy0.adapter.in.web;
 
 import com.github.yamy0.application.port.in.CreateTaskCommand;
 import com.github.yamy0.application.port.in.CreateTaskUseCase;

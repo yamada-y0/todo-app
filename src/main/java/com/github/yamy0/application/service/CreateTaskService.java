@@ -7,7 +7,7 @@ import com.github.yamy0.domain.model.Task;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class CreateTaskService implements CreateTaskUseCase {
+class CreateTaskService implements CreateTaskUseCase {
     private final CreateTaskPort createTaskPort;
 
     public CreateTaskService(CreateTaskPort createTaskPort) {

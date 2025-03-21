@@ -1,4 +1,4 @@
-package com.github.yamy0.infrastructure.persistence;
+package com.github.yamy0.adapter.out.persistence;
 
 import com.github.yamy0.application.port.out.CreateTaskPort;
 import com.github.yamy0.application.port.out.GetAllTaskPort;
@@ -8,7 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.List;
 
 @ApplicationScoped
-public class TaskPersistenceAdapter implements CreateTaskPort, GetAllTaskPort {
+class TaskPersistenceAdapter implements CreateTaskPort, GetAllTaskPort {
     private final TaskRepository repository;
 
     public TaskPersistenceAdapter(TaskRepository repository) {

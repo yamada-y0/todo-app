@@ -1,6 +1,7 @@
-package com.github.yamy0.infrastructure.persistence;
+package com.github.yamy0.adapter.out.persistence;
 
 import com.github.yamy0.domain.model.Task;
+import com.github.yamy0.infrastructure.persistence.TaskEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 

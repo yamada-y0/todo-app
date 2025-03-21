@@ -8,7 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.List;
 
 @ApplicationScoped
-public class GetAllTaskService implements GetAllTaskUseCase {
+class GetAllTaskService implements GetAllTaskUseCase {
     private final GetAllTaskPort getAllTaskPort;
 
 
