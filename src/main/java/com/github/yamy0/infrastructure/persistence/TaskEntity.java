@@ -2,7 +2,7 @@ package com.github.yamy0.infrastructure.persistence;
 
 import com.github.yamy0.domain.model.Status;
 import com.github.yamy0.domain.model.Task;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 

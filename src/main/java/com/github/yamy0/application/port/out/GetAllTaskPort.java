@@ -1,9 +1,10 @@
 package com.github.yamy0.application.port.out;
 
-import com.github.yamy0.domain.model.Task;
+import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+import io.smallrye.mutiny.Uni;
 
 import java.util.List;
 
 public interface GetAllTaskPort {
-    List<Task> getTasks();
+    Uni<List<PanacheEntityBase>> getTasks();
 }

@@ -2,24 +2,25 @@ package com.github.yamy0.adapter.out.persistence;
 
 import com.github.yamy0.domain.model.Task;
 import com.github.yamy0.infrastructure.persistence.TaskEntity;
+import io.quarkus.hibernate.reactive.panache.Panache;
+import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.transaction.Transactional;
+import org.jboss.resteasy.reactive.RestResponse;
 
 import java.util.List;
 
 @ApplicationScoped
 public class TaskRepository {
 
-    public List<Task> findAll() {
-        return TaskEntity.listAll()
-                .stream()
-                .map(entity -> ((TaskEntity) entity).toTask())
-                .toList();
+    public Uni<List<PanacheEntityBase>> findAll() {
+        return TaskEntity.listAll();
     }
 
-    @Transactional
-    public void save(Task task) {
-        TaskEntity entity = TaskEntity.from(task);
-        entity.persist();
+    public Uni<RestResponse<Task>> save(Task task) {
+        return Panache.withTransaction(() -> {
+            TaskEntity entity = TaskEntity.from(task);
+            return entity.persist();
+        }).replaceWith(RestResponse.status(RestResponse.Status.CREATED, task));
     }
 }
