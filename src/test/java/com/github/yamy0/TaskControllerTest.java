@@ -36,7 +36,9 @@ class TaskControllerTest {
                 .statusCode(200)
                 .body("size()", is(1))
                 .body("[0].id", is("id"))
-                .body("[0].name", is("test"));
+                .body("[0].name", is("test"))
+                .body("[0].dueDate", is("2021-01-01"))
+                .body("[0].status", is("TODO"));
     }
 
     @Test
