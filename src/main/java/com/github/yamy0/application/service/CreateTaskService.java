@@ -4,6 +4,7 @@ import com.github.yamy0.application.port.in.CreateTaskCommand;
 import com.github.yamy0.application.port.in.CreateTaskUseCase;
 import com.github.yamy0.application.port.out.CreateTaskPort;
 import com.github.yamy0.domain.model.Task;
+import io.quarkus.hibernate.reactive.panache.common.WithTransaction;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.jboss.resteasy.reactive.RestResponse;
@@ -17,6 +18,7 @@ class CreateTaskService implements CreateTaskUseCase {
     }
 
     @Override
+    @WithTransaction
     public Uni<RestResponse<Task>> createTask(CreateTaskCommand command) {
         Task task = new Task(command.name(), command.dueDate());
         return createTaskPort.createTask(task);
